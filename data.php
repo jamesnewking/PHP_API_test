@@ -1,19 +1,30 @@
 <?php
 include_once "mysql_connect.php";
 define('fromData',true);
-//
-if(empty($_GET['action']/* check if the get superglobal variable 'action' is empty*/)){
-	exit('no action specified');
+if(empty($_POST['action']/* check if the get superglobal variable 'action' is empty*/)){
+    exit('no action specified');
 }
-//require the mysql_connect.php file.  Make sure your properly configured it!
+print("POST output: \n");
+print_r($_POST);
 
 
 $output = [
-	'success'=> false, //we assume we will fail
-	'errors'=>[]
+    'success'=> false, //we assume we will fail
+    'errors'=>[]
 ];
 
-switch($_GET['action']/*do a comparison switch on the get superglobal action*/){
+
+//
+//if(empty($_GET['action']/* check if the get superglobal variable 'action' is empty*/)){
+//	exit('no action specified');
+//}
+//
+//$output = [
+//	'success'=> false, //we assume we will fail
+//	'errors'=>[]
+//];
+//
+switch($_POST['action']/*do a comparison switch on the get superglobal action*/){
 	case 'readAll':
 		include_once "./dataApi/read.php";
 	    //include the php file 'read.php'
@@ -32,10 +43,7 @@ switch($_GET['action']/*do a comparison switch on the get superglobal action*/){
 		break;
 }
 
-//convert the $output variable to json, store the result in $outputJSON
-print json_encode($output);
-//print $outputJSON
 
-//end
+print json_encode($output);
 mysqli_close($conn);
 ?>

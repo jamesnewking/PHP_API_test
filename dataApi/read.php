@@ -19,7 +19,7 @@ if (!$result){
     }
 }
 
-print_r($_GET);
+//print_r($_GET);
 //check if $result is empty.  
 	//if it is, add 'database error' to errors
 //else: 
