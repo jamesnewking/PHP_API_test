@@ -1,16 +1,16 @@
 <?php
-if(empty($_GET['name']) || empty($_GET['grade']) || empty($_GET['course'] ) || empty($_GET['id'] )){
+if(empty($_POST['name']) || empty($_POST['grade']) || empty($_POST['course'] ) || empty($_POST['id'] )){
     $output['errors'][] = 'WTF? missing something in the key words';
-}else if((!filter_var( $_GET['grade'],FILTER_VALIDATE_INT)) || (!filter_var( $_GET['id'],FILTER_VALIDATE_INT))){
+}else if((!filter_var( $_POST['grade'],FILTER_VALIDATE_INT)) || (!filter_var( $_POST['id'],FILTER_VALIDATE_INT))){
     $output['errors'][] = 'grade or id not a whole number';
-} else if($_GET['grade']>100){
+} else if($_POST['grade']>100){
     $output['errors'][] = 'grade is out of bounds';
 } else
 {
-    $name = stripslashes( $_GET['name']);
-    $grade = $_GET['grade'];
-    $course = stripslashes( $_GET['course']);
-    $id = $_GET['id'];
+    $name = stripslashes( $_POST['name']);
+    $grade = $_POST['grade'];
+    $course = stripslashes( $_POST['course']);
+    $id = $_POST['id'];
     $result = null;
     //UPDATE `student_data` SET `name`='James',`grade`='90',`course_name`='what?' WHERE `id`=30
     $query = "UPDATE `student_data` SET `name`='$name',`grade`='$grade',`course_name`='$course' WHERE `id`='$id'";

@@ -1,11 +1,11 @@
 <?php
-if( empty($_GET['id'] )){
+if( empty($_POST['id'] )){
     $output['errors'][] = 'WTF? missing something in the id';
-}else if((!filter_var( $_GET['id'],FILTER_VALIDATE_INT))){
+}else if((!filter_var( $_POST['id'],FILTER_VALIDATE_INT))){
     $output['errors'][] = 'id not a whole number';
 } else
 {
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $result = null;
     //DELETE FROM `student_data` WHERE `id` = 30
     $query = "DELETE FROM `student_data` WHERE `id` = $id";
